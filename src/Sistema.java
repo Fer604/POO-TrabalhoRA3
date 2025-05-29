@@ -179,5 +179,15 @@ public class Sistema {
         }
 
         return resultado;
+
+        public void salvar(String nome_arquivo) throws IOException {
+            FileOutputStream arquivo = new FileOutputStream(nome_arquivo);
+            ObjectOutputStream gravador = new ObjectOutputStream(arquivo);
+
+            gravador.writeObject(this);
+
+            gravador.close();
+            arquivo.close();
+        }
     }
 }
