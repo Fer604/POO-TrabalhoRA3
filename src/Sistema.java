@@ -1,6 +1,5 @@
+import java.io.*;
 import java.util.Scanner;
-import java.io.FileNotFoundException;
-import java.io.File;
 import java.util.List;
 import java.util.ArrayList;
 import java.time.LocalDate;
@@ -179,5 +178,14 @@ public class Sistema {
         }
 
         return resultado;
+    }
+    public void salvar(String nome_arquivo) throws IOException {
+        FileOutputStream arquivo = new FileOutputStream(nome_arquivo);
+        ObjectOutputStream gravador = new ObjectOutputStream(arquivo);
+
+        gravador.writeObject(this);
+
+        gravador.close();
+        arquivo.close();
     }
 }
