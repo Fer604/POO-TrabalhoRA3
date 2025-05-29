@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalTime;
 
-public class Sistema {
+public class Sistema implements Serializable {
     private List<Medico> medicos = new ArrayList<>();
     private List<Paciente> pacientes = new ArrayList<>();
     private List<Consulta> consultas = new ArrayList<>();

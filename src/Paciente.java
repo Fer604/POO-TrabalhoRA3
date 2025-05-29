@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Paciente {
+public class Paciente implements Serializable {
     private String nome;
     private String cpf;
     private List<Consulta> consultas;

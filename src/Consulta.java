@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class Consulta {
+public class Consulta implements Serializable {
     private LocalDate data;
     private LocalTime horario;
     private Medico medico;
