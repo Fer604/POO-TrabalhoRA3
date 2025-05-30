@@ -4,7 +4,6 @@ import java.util.Scanner;
 public class CriarSistema {
     public static void main(String[] args) throws IOException {
         Sistema sistema = new Sistema();
-        Scanner sc = new Scanner(System.in);
 
         String caminhoMedicos = "src/medicos.csv";
         String caminhoPacientes = "src/pacientes.csv";

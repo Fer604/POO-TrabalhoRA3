@@ -188,4 +188,17 @@ public class Sistema implements Serializable {
         gravador.close();
         arquivo.close();
     }
+    public static Sistema abrir(String nome_arquivo) throws IOException, ClassNotFoundException {
+        Sistema sistema = null;
+
+        FileInputStream arquivo = new FileInputStream(nome_arquivo);
+        ObjectInputStream restaurador = new ObjectInputStream(arquivo);
+
+        sistema = (Sistema) restaurador.readObject();
+
+        restaurador.close();
+        arquivo.close();
+
+        return sistema;
+    }
 }
