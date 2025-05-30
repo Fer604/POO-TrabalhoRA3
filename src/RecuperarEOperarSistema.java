@@ -7,7 +7,7 @@ public class RecuperarEOperarSistema {
         Scanner sc = new Scanner(System.in);
         Sistema sistema = null;
         try {
-            sistema = Sistema.abrir("Champions.ser");
+            sistema = Sistema.abrir("Sistema.ser");
             System.out.println("Sistema recuperado com sucesso!");
         } catch (IOException e) {
             System.out.println("Excecao de I/O");
