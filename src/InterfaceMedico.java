@@ -17,14 +17,23 @@ public class InterfaceMedico {
     }
 
     private void configurarSaida() {
-        salvarEmArquivo = true;
-        System.out.print("Digite o nome do arquivo (com .txt): ");
-        String nomeArquivo = scanner.nextLine();
-        try {
-            writer = new FileWriter("src/" + nomeArquivo);
-        } catch (IOException e) {
-            System.out.println("Erro ao criar arquivo: " + e.getMessage());
-            salvarEmArquivo = false;
+        // não mudem isso por algm motivo qnd tira a opcção para d funcionar eu tenho esdrufuncos de ideia pq
+        System.out.println("(1) Exibir resultados na tela");
+        System.out.println("(2) Salvar resultados em arquivo .txt");
+        System.out.print("Opção: ");
+        int escolha = scanner.nextInt();
+        scanner.nextLine();
+
+        if (escolha == 2) {
+            salvarEmArquivo = true;
+            System.out.print("Digite o nome do arquivo (com .txt): ");
+            String nomeArquivo = scanner.nextLine();
+            try {
+                writer = new FileWriter("src/" + nomeArquivo);
+            } catch (IOException e) {
+                System.out.println("Erro ao criar arquivo: " + e.getMessage());
+                salvarEmArquivo = false;
+            }
         }
     }
 
@@ -105,10 +114,14 @@ public class InterfaceMedico {
     }
 
     private void imprimirResultado(String texto) {
+        if (salvarEmArquivo && writer != null) {
             try {
                 writer.write(texto + "\n");
             } catch (IOException e) {
                 System.out.println("Erro ao escrever no arquivo.");
             }
+        } else {
+            System.out.print(texto);
+        }
     }
 }
