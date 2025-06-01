@@ -1,3 +1,7 @@
+import SistemaESeusObjetos.Consulta;
+import SistemaESeusObjetos.Paciente;
+import SistemaESeusObjetos.Sistema;
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
@@ -95,7 +99,7 @@ public class InterfaceMedico {
         StringBuilder resultado = new StringBuilder("Consultas no período:\n");
         for (Consulta c : consultas) {
             resultado.append("- ").append(c.getData()).append(" às ").append(c.getHorario())
-                    .append(", Paciente: ").append(c.getPaciente().getNome()).append("\n");
+                    .append(", SistemaESeusObjetos.Paciente: ").append(c.getPaciente().getNome()).append("\n");
         }
         imprimirResultado(resultado.toString());
     }

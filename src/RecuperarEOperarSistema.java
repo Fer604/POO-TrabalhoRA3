@@ -1,3 +1,5 @@
+import SistemaESeusObjetos.Sistema;
+
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -7,8 +9,8 @@ public class RecuperarEOperarSistema {
         Scanner sc = new Scanner(System.in);
         Sistema sistema = null;
         try {
-            sistema = Sistema.abrir("Sistema.ser");
-            System.out.println("Sistema recuperado com sucesso!");
+            sistema = Sistema.abrir("SistemaESeusObjetos.Sistema.ser");
+            System.out.println("SistemaESeusObjetos.Sistema recuperado com sucesso!");
         } catch (IOException e) {
             System.out.println("Excecao de I/O");
             e.printStackTrace();
@@ -26,7 +28,7 @@ public class RecuperarEOperarSistema {
         while (true) {
             System.out.println("\nEscolha a interface:");
             System.out.println("(1) Interface do Médico");
-            System.out.println("(2) Interface do Paciente");
+            System.out.println("(2) Interface do SistemaESeusObjetos.Paciente");
             System.out.println("(9) Sair");
             System.out.print("Opção: ");
             int escolha = sc.nextInt();

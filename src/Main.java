@@ -1,6 +1,6 @@
 
-import java.io.FileWriter;
-import java.io.IOException;
+import SistemaESeusObjetos.Sistema;
+
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 
@@ -26,7 +26,7 @@ public class Main {
         while (true) {
             System.out.println("\nEscolha a interface:");
             System.out.println("(1) Interface do Médico");
-            System.out.println("(2) Interface do Paciente");
+            System.out.println("(2) Interface do SistemaESeusObjetos.Paciente");
             System.out.println("(9) Sair");
             System.out.print("Opção: ");
             int escolha = sc.nextInt();

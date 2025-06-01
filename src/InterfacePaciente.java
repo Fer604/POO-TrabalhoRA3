@@ -1,3 +1,7 @@
+import SistemaESeusObjetos.Consulta;
+import SistemaESeusObjetos.Medico;
+import SistemaESeusObjetos.Sistema;
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
@@ -38,7 +42,7 @@ public class InterfacePaciente {
 
     public void exibirMenu() {
         while (true) {
-            System.out.println("\nInterface do Paciente:");
+            System.out.println("\nInterface do SistemaESeusObjetos.Paciente:");
             System.out.println("(1) Listar médicos que o paciente já consultou");
             System.out.println("(2) Consultas passadas com um médico específico");
             System.out.println("(3) Consultas agendadas no futuro");
