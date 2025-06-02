@@ -1,3 +1,5 @@
+package Interface;
+
 import SistemaESeusObjetos.Consulta;
 import SistemaESeusObjetos.Medico;
 import SistemaESeusObjetos.Sistema;

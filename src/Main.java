@@ -1,4 +1,6 @@
 
+import Interface.InterfaceMedico;
+import Interface.InterfacePaciente;
 import SistemaESeusObjetos.Sistema;
 
 import java.util.Scanner;

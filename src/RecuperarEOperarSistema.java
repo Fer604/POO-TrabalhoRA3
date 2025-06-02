@@ -1,4 +1,11 @@
+import Interface.InterfaceMedico;
+import Interface.InterfacePaciente;
+import Interface.LeitorBotoes;
 import SistemaESeusObjetos.Sistema;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionListener;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -9,8 +16,8 @@ public class RecuperarEOperarSistema {
         Scanner sc = new Scanner(System.in);
         Sistema sistema = null;
         try {
-            sistema = Sistema.abrir("SistemaESeusObjetos.Sistema.ser");
-            System.out.println("SistemaESeusObjetos.Sistema recuperado com sucesso!");
+            sistema = Sistema.abrir("Sistema.ser");
+            System.out.println("Sistema recuperado com sucesso!");
         } catch (IOException e) {
             System.out.println("Excecao de I/O");
             e.printStackTrace();
@@ -24,11 +31,23 @@ public class RecuperarEOperarSistema {
             sc.close();
             return;
         }
-        //main antiga
+        //main antiga(mostly)
+
+
+
         while (true) {
+            JFrame frame = new JFrame("Login");
+            frame.setSize(600, 300);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+            JPanel painel = new JPanel();
+            frame.add(painel);
+            inserir_componentes(painel);
+
+            frame.setVisible(true);
             System.out.println("\nEscolha a interface:");
             System.out.println("(1) Interface do Médico");
-            System.out.println("(2) Interface do SistemaESeusObjetos.Paciente");
+            System.out.println("(2) Interface do Paciente");
             System.out.println("(9) Sair");
             System.out.print("Opção: ");
             int escolha = sc.nextInt();
@@ -49,5 +68,35 @@ public class RecuperarEOperarSistema {
 
         sc.close();
         System.out.println("Programa encerrado.");
+    }
+    private static void inserir_componentes(JPanel painel) {
+
+        painel.setLayout(null);
+
+        // rótulos e campos
+
+
+        // botões:
+
+        //width = 600   só pra nã ter q ir lá pra cima ver os valor
+
+        //height = 300
+
+        JButton botao_interface_medico = new JButton("Interface Médico");
+        botao_interface_medico.setBounds(getWidth()-590), 80, 150, 25);
+        painel.add(botao_interface_medico);
+
+        JButton botao_interface_paciente = new JButton("Interface Paciente");
+        botao_interface_paciente.setBounds(width-10, 80, 150, 25);
+        painel.add(botao_interface_paciente);
+
+        JButton botao_sair = new JButton("Sair");
+        botao_sair.setBounds(300, 105, 80, 25);
+        painel.add(botao_sair);
+
+        ActionListener leitor_botoes = new LeitorBotoes();
+        botao_interface_medico.addActionListener(leitor_botoes);
+        botao_interface_paciente.addActionListener(leitor_botoes);
+        botao_sair.addActionListener(leitor_botoes);
     }
 }
