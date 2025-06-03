@@ -8,6 +8,10 @@ public class LeitorBotoes implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton origem = (JButton) e.getSource();
+
+        if(true){
+            ;
+        }
         JOptionPane.showMessageDialog(origem, origem.getText() + " foi apertado");
     }
 }

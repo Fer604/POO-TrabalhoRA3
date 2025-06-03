@@ -33,73 +33,12 @@ public class RecuperarEOperarSistema {
             return;
         }
         //main antiga(mostly)
+        //mentira foi po karai
+
+            Tela tela = new Tela("Sistema");
+            tela.mostrar();
+            sc.close();
 
 
-
-        while (true) {
-            Tela tela = new Tela("tela");
-            tela.rodar();
-            JFrame frame = new JFrame("Login");
-            frame.setSize(600, 300);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-            JPanel painel = new JPanel();
-            frame.add(painel);
-            inserir_componentes(painel);
-
-            frame.setVisible(true);
-            System.out.println("\nEscolha a interface:");
-            System.out.println("(1) Interface do Médico");
-            System.out.println("(2) Interface do Paciente");
-            System.out.println("(9) Sair");
-            System.out.print("Opção: ");
-            int escolha = sc.nextInt();
-
-            if (escolha == 9) break;
-
-            switch (escolha) {
-                case 1:
-                    new InterfaceMedico(sc, sistema).exibirMenu();
-                    break;
-                case 2:
-                    new InterfacePaciente(sc, sistema).exibirMenu();
-                    break;
-                default:
-                    System.out.println("Opção inválida.");
-            }
-        }
-
-        sc.close();
-        System.out.println("Programa encerrado.");
-    }
-    private static void inserir_componentes(JPanel painel) {
-
-        painel.setLayout(null);
-
-        // rótulos e campos
-
-
-        // botões:
-
-        //width = 600   só pra nã ter q ir lá pra cima ver os valor
-
-        //height = 300
-
-        JButton botao_interface_medico = new JButton("Interface Médico");
-        botao_interface_medico.setBounds(getWidth()-590), 80, 150, 25);
-        painel.add(botao_interface_medico);
-
-        JButton botao_interface_paciente = new JButton("Interface Paciente");
-        botao_interface_paciente.setBounds(getWidth-10, 80, 150, 25);
-        painel.add(botao_interface_paciente);
-
-        JButton botao_sair = new JButton("Sair");
-        botao_sair.setBounds(300, 105, 80, 25);
-        painel.add(botao_sair);
-
-        ActionListener leitor_botoes = new LeitorBotoes();
-        botao_interface_medico.addActionListener(leitor_botoes);
-        botao_interface_paciente.addActionListener(leitor_botoes);
-        botao_sair.addActionListener(leitor_botoes);
     }
 }

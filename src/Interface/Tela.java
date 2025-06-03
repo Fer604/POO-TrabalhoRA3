@@ -2,57 +2,63 @@ package Interface;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 
 public class Tela extends JPanel {
     private static final int ALTURA_BARRA_TITULO = 20;
     private JFrame frame;
-    private int contador = 0;
     public Tela(String nome) {
         setFocusable(true);
-        frame = new JFrame(nome); // cria um frame
-        frame.add(this); // insere o território no frame
+        frame = new JFrame(nome); // cria um frame; // insere o território no frame
         frame.setSize(400, 300 + ALTURA_BARRA_TITULO ); // define as dimensões do frame
-        frame.setVisible(true); // torna o frame visível
+        frame.setLocationRelativeTo(null);//centraliza a janela no ... centro
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // define como o frame é fechado
+
+
+        JPanel painel = new JPanel();
+        painel.setLayout(null);
+
+        inserir_componentes(painel);
+        frame.add(painel);
     }
-    public void paint(Graphics g) {
-        super.paint(g);
-        Graphics2D g2d = (Graphics2D) g;
-        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                RenderingHints.VALUE_ANTIALIAS_ON);
-        g2d.setColor(Color.BLACK);
-        g2d.setFont(new Font("Arial", Font.BOLD, 16));
-        g2d.drawString("Contador "+String.valueOf(contador), (getWidth()/2), getHeight()/2);
-        g2d.setColor(Color.BLUE);
-        g2d.fillRect(30, 60, 40, 20);
+    public void mostrar() {
+        frame.setVisible(true);// torna o frame visível
     }
-    public void rodar() {
-        try {
-            Thread.sleep(1000); // dorme por um segundo
-        }
-        catch ( Exception e )
-        {
-            e.printStackTrace();
-        }
-        boolean rodando = true;
-        while (rodando) {
-            System.out.println("largura: " + getWidth() + ", altura: " + getHeight());
-            contador++;
-            if (contador == 69) contador = 0;
-            repaint(); // atualiza a imagem da janela
-            try {
-                Thread.sleep(100); // dorme por décimo de segundo
-            }
-            catch ( Exception e )
-            {
-                e.printStackTrace();
-            }
-        }
-        game_over();
-    }
-    private void game_over() {
-        String mensagem = "Parabéns!";
-        JOptionPane.showMessageDialog(this, mensagem, "Game Over", JOptionPane.YES_NO_OPTION);
+    private static void inserir_componentes(JPanel painel) {
+        /// System.out.println("\nEscolha a interface:");
+        ///             System.out.println("(1) Interface do Médico");
+        ///             System.out.println("(2) Interface do SistemaESeusObjetos.Paciente");
+        ///             System.out.println("(9) Sair");
+
+
+
+        /*JLabel rotuloUsuario = new JLabel("Usuário:");
+        rotuloUsuario.setBounds(10, 10, 80, 25);
+        painel.add(rotuloUsuario);
+
+        JTextField campoUsuario = new JTextField(20);
+        campoUsuario.setBounds(100, 10, 160, 25);
+        painel.add(campoUsuario);*/
+
+
+        JButton botaoInterMedic = new JButton("Interface do Médico");
+        botaoInterMedic.setBounds(125, 65, 150, 25);
+        painel.add(botaoInterMedic);
+
+        JButton botaoInterPacient = new JButton("Interface do Paciente");
+        botaoInterPacient.setBounds(120, 100, 160, 25);
+        painel.add(botaoInterPacient);
+
+        JButton sair = new JButton("Sair");
+        sair.setBounds(150, 155, 100, 25);
+        painel.add(sair);
+
+
+
+        ActionListener leitorBotoes = new LeitorBotoes();
+        botaoInterMedic.addActionListener(leitorBotoes);
+        botaoInterPacient.addActionListener(leitorBotoes);
+        sair.addActionListener(leitorBotoes);
     }
 }
