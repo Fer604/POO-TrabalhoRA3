@@ -1,6 +1,7 @@
 import Interface.InterfaceMedico;
 import Interface.InterfacePaciente;
 import Interface.LeitorBotoes;
+import Interface.Tela;
 import SistemaESeusObjetos.Sistema;
 
 import javax.swing.*;
@@ -36,6 +37,8 @@ public class RecuperarEOperarSistema {
 
 
         while (true) {
+            Tela tela = new Tela("tela");
+            tela.rodar();
             JFrame frame = new JFrame("Login");
             frame.setSize(600, 300);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -87,7 +90,7 @@ public class RecuperarEOperarSistema {
         painel.add(botao_interface_medico);
 
         JButton botao_interface_paciente = new JButton("Interface Paciente");
-        botao_interface_paciente.setBounds(width-10, 80, 150, 25);
+        botao_interface_paciente.setBounds(getWidth-10, 80, 150, 25);
         painel.add(botao_interface_paciente);
 
         JButton botao_sair = new JButton("Sair");
