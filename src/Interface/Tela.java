@@ -1,64 +1,69 @@
 package Interface;
 
+import SistemaESeusObjetos.Sistema;
+
 import javax.swing.*;
-import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyListener;
 
 public class Tela extends JPanel {
-    private static final int ALTURA_BARRA_TITULO = 20;
     private JFrame frame;
-    public Tela(String nome) {
-        setFocusable(true);
-        frame = new JFrame(nome); // cria um frame; // insere o território no frame
-        frame.setSize(400, 300 + ALTURA_BARRA_TITULO ); // define as dimensões do frame
-        frame.setLocationRelativeTo(null);//centraliza a janela no ... centro
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // define como o frame é fechado
+    private Sistema sistema;
 
+    public Tela(String nome, Sistema sistema) {
+        this.sistema = sistema;
+        frame = new JFrame(nome);
+        frame.setSize(400, 300);
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel painel = new JPanel();
         painel.setLayout(null);
 
-        inserir_componentes(painel);
+        inserirComponentes(painel);
+
         frame.add(painel);
     }
+
     public void mostrar() {
-        frame.setVisible(true);// torna o frame visível
+        frame.setVisible(true);
     }
-    private static void inserir_componentes(JPanel painel) {
-        /// System.out.println("\nEscolha a interface:");
-        ///             System.out.println("(1) Interface do Médico");
-        ///             System.out.println("(2) Interface do SistemaESeusObjetos.Paciente");
-        ///             System.out.println("(9) Sair");
 
+    private void inserirComponentes(JPanel painel) {
+        JLabel titulo = new JLabel("Escolha a interface:");
+        titulo.setBounds(120, 30, 200, 25);
+        painel.add(titulo);
 
+        JButton botaoMedico = new JButton("Interface do Médico");
+        botaoMedico.setBounds(100, 70, 200, 30);
+        painel.add(botaoMedico);
 
-        /*JLabel rotuloUsuario = new JLabel("Usuário:");
-        rotuloUsuario.setBounds(10, 10, 80, 25);
-        painel.add(rotuloUsuario);
+        JButton botaoPaciente = new JButton("Interface do Paciente");
+        botaoPaciente.setBounds(100, 120, 200, 30);
+        painel.add(botaoPaciente);
 
-        JTextField campoUsuario = new JTextField(20);
-        campoUsuario.setBounds(100, 10, 160, 25);
-        painel.add(campoUsuario);*/
+        JButton botaoSair = new JButton("Sair");
+        botaoSair.setBounds(150, 180, 100, 30);
+        painel.add(botaoSair);
 
+        botaoMedico.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                InterfaceSwingMedico medicoUI = new InterfaceSwingMedico(sistema);
+                medicoUI.mostrar();
+            }
+        });
 
-        JButton botaoInterMedic = new JButton("Interface do Médico");
-        botaoInterMedic.setBounds(125, 65, 150, 25);
-        painel.add(botaoInterMedic);
+        botaoPaciente.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                InterfaceSwingPaciente pacienteUI = new InterfaceSwingPaciente(sistema);
+                pacienteUI.mostrar();
+            }
+        });
 
-        JButton botaoInterPacient = new JButton("Interface do Paciente");
-        botaoInterPacient.setBounds(120, 100, 160, 25);
-        painel.add(botaoInterPacient);
-
-        JButton sair = new JButton("Sair");
-        sair.setBounds(150, 155, 100, 25);
-        painel.add(sair);
-
-
-
-        ActionListener leitorBotoes = new LeitorBotoes();
-        botaoInterMedic.addActionListener(leitorBotoes);
-        botaoInterPacient.addActionListener(leitorBotoes);
-        sair.addActionListener(leitorBotoes);
+        botaoSair.addActionListener(e -> System.exit(0));
     }
 }

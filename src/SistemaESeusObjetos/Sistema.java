@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalTime;
+import Excecoes.ConsultaNaoEncontradaException;
+import Excecoes.PacienteNaoEncontradoException;
 
 public class Sistema implements Serializable {
     private List<Medico> medicos = new ArrayList<>();
@@ -17,7 +19,7 @@ public class Sistema implements Serializable {
         Scanner scanner = new Scanner(new File(caminho));
         scanner.useDelimiter(";");
 
-         if (scanner.hasNextLine()) {
+        if (scanner.hasNextLine()) {
             scanner.nextLine();
         }
 
@@ -203,4 +205,28 @@ public class Sistema implements Serializable {
 
         return sistema;
     }
+    public Paciente getPacientePorCodigo(String codigo) throws PacienteNaoEncontradoException {
+        for (Paciente p : pacientes) {
+            if (p.getCpf() == codigo) {
+                return p;
+            }
+        }
+        throw new PacienteNaoEncontradoException("Paciente com código " + codigo + " não encontrado.");
+    }
+    public String getHistoricoConsultas(String codigoPaciente) throws PacienteNaoEncontradoException, ConsultaNaoEncontradaException {
+        Paciente paciente = getPacientePorCodigo(codigoPaciente);
+        List<Consulta> consultas = paciente.getConsultas(); // certifique-se de que esse método existe
+
+        if (consultas == null || consultas.isEmpty()) {
+            throw new ConsultaNaoEncontradaException("Nenhuma consulta encontrada para o paciente " + paciente.getNome());
+        }
+
+        StringBuilder sb = new StringBuilder("Histórico de Consultas:\n");
+        for (Consulta c : consultas) {
+            sb.append("- ").append(c.getData()).append(" às ").append(c.getHorario()).append("\n");
+        }
+        return sb.toString();
+    }
+
+
 }

@@ -28,6 +28,7 @@ public class InterfaceMedico {
 
     private void configurarSaida() {
         // não mudem isso por algm motivo qnd tira a opcção para d funcionar eu tenho esdrufuncos de ideia pq
+        //se pa na real se só tira o if e os prints dá boa
         System.out.println("(1) Exibir resultados na tela");
         System.out.println("(2) Salvar resultados em arquivo .txt");
         System.out.print("Opção: ");

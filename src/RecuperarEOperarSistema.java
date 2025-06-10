@@ -35,7 +35,7 @@ public class RecuperarEOperarSistema {
         //main antiga(mostly)
         //mentira foi po karai
 
-            Tela tela = new Tela("Sistema");
+            Tela tela = new Tela("Sistema",sistema);
             tela.mostrar();
             sc.close();
 
