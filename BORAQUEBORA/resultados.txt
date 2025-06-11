@@ -1,0 +1,6 @@
+Paciente encontrado: Paciente: Maria (33333333333)
+Erro: Paciente não encontrado.
+Paciente encontrado: Paciente: João (44444444444)
+Erro: Médico não encontrado.
+Erro: Médico não encontrado.
+Paciente encontrado: Paciente: João (44444444444)
